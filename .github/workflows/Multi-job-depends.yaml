@@ -29,6 +29,7 @@ jobs:
 
   # 2️⃣ Test Job (depends on build)
   test:
+    needs: build 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -51,6 +52,7 @@ jobs:
 
   # 3️⃣ Deploy Job (only if tests pass)
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Pretend Deploy
