@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print environment
-        run: echo "${{ GITHUB_EVENT_NAME }}"
+        run: echo "${{ GITHUB.EVENT_NAME }}"
 
       - name: Print environment
-        run: echo "${{ GITHUB_WORKFLOW }}"
+        run: echo "${{ GITHUB.WORKFLOW }}"
         
       - name: Print environment
         run: echo "You selected the ${{ github.event.inputs.environment }} environment."
