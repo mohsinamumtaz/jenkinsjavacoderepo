@@ -1,0 +1,16 @@
+name: Job Timeout Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  timeout-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1  # Set timeout to 1 minute
+
+    steps:
+      - name: Start a long-running task
+        run: |
+          echo "Starting a 5-minute sleep..."
+          sleep 300
+          echo "This message will not be printed"
