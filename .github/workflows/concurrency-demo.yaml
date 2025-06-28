@@ -1,0 +1,26 @@
+name: Parallelism vs Concurrency Demo
+
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: "ci-${{ github.ref }}"  # 1 workflow per branch
+  cancel-in-progress: true       # Cancel older if new one comes
+
+jobs:
+  job1:
+    name: Parallel Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🏃‍♂️ Job 1 started"
+      - run: sleep 40
+      - run: echo "✅ Job 1 finished"
+
+  job2:
+    name: Parallel Job 2
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🏃‍♀️ Job 2 started"
+      - run: sleep 25
+      - run: echo "✅ Job 2 finished"
